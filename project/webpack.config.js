@@ -17,11 +17,25 @@ module.exports = {
 		rules: [
 			{
 				test: /\.vue$/,
-				use: {
-					loader: 'vue-loader'
-				}
+				use: 'vue-loader'
+			},
+			{
+				test: /\.css$/,
+				use: [
+					{
+						loader: 'style-loader'
+					},
+					{
+						loader:'css-loader'
+					}
+				]
+			},
+			{
+				test: /\.(ttf|png)$/,
+				use: 'url-loader'
 			}
 		]
+
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
