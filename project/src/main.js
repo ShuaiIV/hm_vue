@@ -6,6 +6,12 @@ import Vue from 'vue';
 // 导入vue项目的入口文件
 import App from './app.vue';
 
+// 导入vue-resource
+import VueResource from 'vue-resource';
+
+// 使用vue-resource
+Vue.use(VueResource);
+
 // 导入路由
 import VueRouter from 'vue-router';
 
@@ -32,6 +38,7 @@ import home from './components/home/home.vue';
 import message from './components/message/message.vue';
 import settings from './components/settings/settiongs.vue';
 import shopcart from './components/shopcart/shopcart.vue';
+import newsList from './components/news/newsList.vue';
 
 // 创建并设置路由
 const router = new VueRouter({
@@ -40,7 +47,8 @@ const router = new VueRouter({
 		{ path: '/home', component: home },
 		{ path: '/message', component: message },
 		{ path: '/settings', component: settings },
-		{ path: '/shopcart', component: shopcart }
+		{ path: '/shopcart', component: shopcart },
+		{ path: '/news/newslist', component: newsList }
 	],
 	linkActiveClass: 'mui-active'
 });
