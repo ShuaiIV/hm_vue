@@ -5,7 +5,7 @@
 		<!--新闻详情的标题-->
 		<div class="title">
 			<h3>{{newsDetail.title}}</h3>
-			<p>{{newsDetail.add_time}}&nbsp;&nbsp;&nbsp;{{newsDetail.click}}次浏览&nbsp;&nbsp;&nbsp; 分类:民生经济
+			<p>{{newsDetail.add_time | dmtDate('YYYY-MM-DD')}}&nbsp;&nbsp;&nbsp;{{newsDetail.click}}次浏览&nbsp;&nbsp;&nbsp; 分类:民生经济
 			</p>
 		</div>
 		<!--新闻详情的内容-->

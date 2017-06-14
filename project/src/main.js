@@ -32,6 +32,17 @@ import '../public/mui/css/icons-extra.css'
 // 导入自己的css
 import '../public/css/site.css'
 
+// 导入moment，格式化日期时间
+import moment from 'moment'
+
+// 设置全局过滤器
+Vue.filter('dmtDate', (input, formString) => {
+	// 设置默认日期时间格式
+	const lastFormString = formString || "YYYY-MM-DD HH:mm:ss";
+	// 返回处理后的日期时间
+	return moment(input).format(lastFormString);
+})
+
 // 设置路由
 // 先导入组件
 import home from './components/home/home.vue';

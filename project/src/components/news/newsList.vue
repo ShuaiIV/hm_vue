@@ -13,7 +13,7 @@
 	
 						<p class="mui-ellipsis">
 							<span class="left">
-								{{item.add_time}}
+								{{item.add_time  | dmtDate('YYYY-MM-DD')}}
 							</span>
 	
 							<span class="right">
