@@ -39,6 +39,7 @@ import message from './components/message/message.vue';
 import settings from './components/settings/settiongs.vue';
 import shopcart from './components/shopcart/shopcart.vue';
 import newsList from './components/news/newsList.vue';
+import newsDetail from './components/news/newsDetail.vue';
 
 // 创建并设置路由
 const router = new VueRouter({
@@ -48,7 +49,8 @@ const router = new VueRouter({
 		{ path: '/message', component: message },
 		{ path: '/settings', component: settings },
 		{ path: '/shopcart', component: shopcart },
-		{ path: '/news/newslist', component: newsList }
+		{ path: '/news/newslist', component: newsList },
+		{ path: '/news/newsdetail/:newsId', component: newsDetail }
 	],
 	linkActiveClass: 'mui-active'
 });
