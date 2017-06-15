@@ -35,6 +35,10 @@ import '../public/css/site.css'
 // 导入moment，格式化日期时间
 import moment from 'moment'
 
+// 导入并使用vue-preview处理缩略图
+import VuePreview from 'vue-preview';
+Vue.use(VuePreview);
+
 // 设置全局过滤器
 Vue.filter('dmtDate', (input, formString) => {
 	// 设置默认日期时间格式
@@ -51,6 +55,9 @@ import settings from './components/settings/settiongs.vue';
 import shopcart from './components/shopcart/shopcart.vue';
 import newsList from './components/news/newsList.vue';
 import newsDetail from './components/news/newsDetail.vue';
+import photoList from './components/photo/photoList.vue';
+import photoDetail from './components/photo/photoDetail.vue';
+
 
 // 创建并设置路由
 const router = new VueRouter({
@@ -61,7 +68,9 @@ const router = new VueRouter({
 		{ path: '/settings', component: settings },
 		{ path: '/shopcart', component: shopcart },
 		{ path: '/news/newslist', component: newsList },
-		{ path: '/news/newsdetail/:newsId', component: newsDetail }
+		{ path: '/news/newsdetail/:newsId', component: newsDetail },
+		{ path: '/photo/photolist', component: photoList },
+		{ path: '/photo/photodetail/:photoId', component: photoDetail }
 	],
 	linkActiveClass: 'mui-active'
 });

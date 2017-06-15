@@ -45,7 +45,7 @@ export default {
 		getNewsList() {
 			const url = common.apihost + 'api/getnewslist';
 			this.$http.get(url).then(response => {
-				console.log(response);
+				// console.log(response);
 				this.newsList = response.body.message;
 			}, function (error) {
 
