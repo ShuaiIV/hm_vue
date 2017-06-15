@@ -13,14 +13,17 @@
 			<p v-html="newsDetail.content"></p>
 		</div>
 		<!--此条新闻的评论-->
-		<!--<subcomment :commentId="this.$route.params.newsId"></subcomment>-->
+		<subcomment :commentId="this.$route.params.newsId"></subcomment>
 	</div>
-	</div>
+
 </template>
 
 <script>
 // 引入共用的common js文件
-import common from '../common/common.js'
+import common from '../common/common.js';
+
+// 导入子组件
+import subComment from '../subComment/subComment.vue';
 
 export default {
 	data() {
@@ -41,6 +44,10 @@ export default {
 
 			})
 		}
+	},
+	// 注册子组件
+	components: {
+		subcomment: subComment
 	}
 }
 </script>

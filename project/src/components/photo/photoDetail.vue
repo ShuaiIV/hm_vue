@@ -20,12 +20,18 @@
 		<div class="content">
 			<div v-html="photoDetail.content"></div>
 		</div>
+
+		<!--评论子组件-->
+		<subcomment :commentId="this.$route.params.photoId"></subcomment>
 	</div>
 </template>
 
 <script>
 // 导入共用的common.js文件
 import common from '../common/common.js';
+
+// 导入评论功能子组件
+import subComment from '../subComment/subComment.vue';
 
 export default {
 	data() {
@@ -66,6 +72,10 @@ export default {
 				this.thumbPhoto = response.body.message;
 			}, error => {})
 		}
+	},
+	// 注册子组件
+	components: {
+		subcomment: subComment
 	}
 }
 </script>
