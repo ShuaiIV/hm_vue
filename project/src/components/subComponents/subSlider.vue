@@ -45,7 +45,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 /*轮播图的样式*/
 
 .swipeBox {

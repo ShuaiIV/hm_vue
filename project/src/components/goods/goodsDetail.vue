@@ -101,7 +101,7 @@ export default {
 			addGoods(goodsObj, 'goodsList');
 
 			// 传值给App.vue，让它去更新徽标值
-			bus.$emit('updateShopCartBadge', this.goodsNum);	
+			bus.$emit('updateShopCartBadge');
 
 		}
 	},

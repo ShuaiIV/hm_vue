@@ -29,4 +29,50 @@ export function getAllGoodsCounts(key) {
 
 	// 然后结果
 	return counts;
+};
+
+// 从localstorage中的商品数组获取商品id的数组
+export function getGoodsIdArray(key) {
+	// 先定义一个空数组，用于结束结果
+	const arr = [];
+
+	// 获取并遍历localstorage中的商品数组
+	const goodsArray = JSON.parse(localStorage.getItem(key) || '[]');
+	goodsArray.forEach(item => {
+		if (arr.indexOf(item.goodsId) == -1) {
+			arr.push(item.goodsId);
+		}
+	});
+
+	// 返回结果
+	return arr;
+};
+
+// 从localstorage中的商品数组获取商品id与数量的对象
+export function getGoodsObject(key) {
+	// 先定义一个空数组，用于结束结果
+	const obj = {};
+
+	// 获取并遍历localstorage中的商品数组
+	const goodsArray = JSON.parse(localStorage.getItem(key) || '[]');
+	goodsArray.forEach(item => {
+		obj[item.goodsId] = obj[item.goodsId] ? obj[item.goodsId] + item.goodsNum : item.goodsNum;
+	});
+
+	// 返回结果
+	return obj;
+};
+
+// 从localstorage中删除指定id的商品
+export function removeGoodsById(key, id) {
+	// 获取并遍历localstorage中的商品数组
+	const goodsArray = JSON.parse(localStorage.getItem(key) || '[]');
+	for (let i = goodsArray.length; i--;) {
+		if (goodsArray[i].goodsId == id) {
+			goodsArray.splice(i, 1);
+		}
+	};
+
+	// 重新赋值localstorage
+	localStorage.setItem('goodsList', JSON.stringify(goodsArray));
 }

@@ -5,6 +5,8 @@
 	<div>
 		<!--固定的顶部栏-->
 		<mt-header fixed title="Vue项目"></mt-header>
+		<!--返回按钮-->
+		<div v-show="isShow" @click="goBack()" class="goBackStyle">&lt;返回</div>
 	
 		<!--中间的路由展示区域-->
 		<router-view></router-view>
@@ -47,7 +49,7 @@ import $ from 'jquery';
 import { getAllGoodsCounts } from './components/common/shopCartHelper.js';
 
 // 监听updateShopCartBadge事件
-bus.$on('updateShopCartBadge', (count) => {
+bus.$on('updateShopCartBadge', () => {
 	// 使用jQuery组件更改购物车微标的值
 	$("#shopcart-badge").text(getAllGoodsCounts('goodsList'));
 })
@@ -55,7 +57,8 @@ bus.$on('updateShopCartBadge', (count) => {
 export default {
 	data() {
 		return {
-			count: 0
+			count: 0,
+			isShow: false
 		}
 	},
 	created() {
@@ -73,13 +76,54 @@ export default {
 		// 处理购物车微标更新
 		// 从localstorage中获取所以商品总数量
 		// badge.innerText = getAllGoodsCounts('goodsList');
-
 		// }
+
+		// 全局返回按钮的方法
+		goBack() {
+			this.$router.go(-1);
+		},
+		showOrHidden(path) {
+			if (path == '/home' || path == '/message'
+				|| path == '/shopcart' || path == '/settings') {
+				this.isShow = false
+			} else {
+				this.isShow = true
+			}
+		},
+		// 初次加载
+		load() {
+			this.showOrHidden(this.$route.path)
+		},
+	},
+	// 检测路由变化
+	watch: {
+		'$route': function (newValue, oldValue) {
+			this.showOrHidden(newValue.path)
+		}
+	},
+	// 重新加载时
+	mounted() {
+		window.addEventListener('load', this.load)
 	}
 }
 </script>
 
 // 样式部分
 <style>
+/* 更改mint-ui的样式 */
 
+
+/*.mint-header {
+        background-color: green;
+    }*/
+
+.goBackStyle {
+	position: fixed;
+	left: 10px;
+	top: 10px;
+	z-index: 1;
+	color: white;
+	font-size: 14px;
+	font-weight: 700;
+}
 </style>
