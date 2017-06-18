@@ -1,15 +1,7 @@
 <template>
 	<div class="main">
 		<!--首页轮播图-->
-		<mt-swipe class="swipeBox" :auto='2000'>
-			<!--2s自动切换-->
-			<!--使用v-for循环生成图片列表-->
-			<mt-swipe-item v-for='item in imgList' :key='item.url'>
-				<a :src='item.url'>
-					<img :src='item.img'>
-				</a>
-			</mt-swipe-item>
-		</mt-swipe>
+		<subslider :imgUrl="'api/getlunbo'"></subslider>
 	
 		<!--首页九宫格-->
 		<ul class="mui-table-view mui-grid-view mui-grid-9">
@@ -20,7 +12,7 @@
 				</router-link>
 			</li>
 			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-				<router-link to="/photo/photolist" >
+				<router-link to="/photo/photolist">
 					<span class="mui-icon mui-icon-email">
 						<span class="mui-badge">5</span>
 					</span>
@@ -28,10 +20,10 @@
 				</router-link>
 			</li>
 			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-				<a href="#">
+				<router-link to="/goods/goodslist">
 					<span class="mui-icon mui-icon-chatbubble"></span>
 					<div class="mui-media-body">商品购买</div>
-				</a>
+				</router-link>
 			</li>
 			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
 				<a href="#">
@@ -60,28 +52,33 @@
 // 导入公共的js文件
 import common from '../common/common.js';
 
+// 导入轮播图子组件
+import subslider from '../subComponents/subSlider.vue'
+
 export default {
-	data: () => {
+	data() {
 		return {
-			imgList: []
 		}
 	},
 	//created是我们home.vue这个组件的生命周期函数之一
 	//他在我们home组件创建出来之后，还没有显示在页面之前就会被自动调用
 	created() {
-		this.getImgUrl()
+		// this.getImgUrl()
 	},
 	methods: {
-		getImgUrl() {
-			const url = common.apihost + "api/getlunbo";
-			// 使用vue-resource发送请求
-			this.$http.get(url).then(function (response) {
-				// 将获取到数据传递到I'mList中
-				this.imgList = response.body.message;
-			}, function (error) {
+		// getImgUrl() {
+		// 	const url = common.apihost + "api/getlunbo";
+		// 	// 使用vue-resource发送请求
+		// 	this.$http.get(url).then(function (response) {
+		// 		// 将获取到数据传递到I'mList中
+		// 		this.imgList = response.body.message;
+		// 	}, function (error) {
 
-			})
-		}
+		// 	})
+		// }
+	},
+	components: {
+		subslider
 	}
 }
 </script>
@@ -99,6 +96,7 @@ img {
 	height: 250px;
 	width: 100%;
 }
+
 
 
 /*九宫格的样式*/

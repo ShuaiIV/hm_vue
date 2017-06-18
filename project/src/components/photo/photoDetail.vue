@@ -22,7 +22,7 @@
 		</div>
 
 		<!--评论子组件-->
-		<subcomment :commentId="this.$route.params.photoId"></subcomment>
+		<subcomments :commentId="this.$route.params.photoId"></subcomments>
 	</div>
 </template>
 
@@ -31,7 +31,7 @@
 import common from '../common/common.js';
 
 // 导入评论功能子组件
-import subComment from '../subComment/subComment.vue';
+import subcomments from '../subComponents/subComments.vue';
 
 export default {
 	data() {
@@ -75,7 +75,7 @@ export default {
 	},
 	// 注册子组件
 	components: {
-		subcomment: subComment
+		subcomments
 	}
 }
 </script>

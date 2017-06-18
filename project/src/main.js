@@ -57,6 +57,11 @@ import newsList from './components/news/newsList.vue';
 import newsDetail from './components/news/newsDetail.vue';
 import photoList from './components/photo/photoList.vue';
 import photoDetail from './components/photo/photoDetail.vue';
+import goodsList from './components/goods/goodsList.vue';
+import goodsDetail from './components/goods/goodsDetail.vue';
+import goodsGraphicDetail from './components/goods/goodsGraphicDetail.vue';
+import goodsComments from './components/goods/goodsComments.vue';
+
 
 
 // 创建并设置路由
@@ -70,7 +75,11 @@ const router = new VueRouter({
 		{ path: '/news/newslist', component: newsList },
 		{ path: '/news/newsdetail/:newsId', component: newsDetail },
 		{ path: '/photo/photolist', component: photoList },
-		{ path: '/photo/photodetail/:photoId', component: photoDetail }
+		{ path: '/photo/photodetail/:photoId', component: photoDetail },
+		{ path: '/goods/goodslist', component: goodsList },
+		{ path: '/goods/goodsdetail/:goodsId', component: goodsDetail },
+		{ path: '/goods/goodsgraphicdetail', name: 'goodsGraphicDetail', component: goodsGraphicDetail },
+		{ path: '/goods/goodscomments', component: goodsComments }
 	],
 	linkActiveClass: 'mui-active'
 });

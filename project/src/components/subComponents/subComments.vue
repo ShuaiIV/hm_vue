@@ -65,7 +65,7 @@ export default {
 			const url = common.apihost + 'api/postcomment/' + this.commentId;
 			// 发送Ajax请求
 			this.$http.post(url, {content: comment}, {emulateJSON: true}).then(response => {
-				console.log(response)
+				// console.log(response)
 				// 根据返回的信息，判断是否提交成功
 				if (response.body.status == 0) {
 					// 使用Toast组件提示用户
@@ -94,7 +94,7 @@ export default {
 			const url = common.apihost + 'api/getcomments/' + this.commentId + '?pageindex=' + this.pageIndex;
 			// 发送Ajax请求
 			this.$http.get(url).then(response => {
-				console.log(response);
+				// console.log(response);
 				this.commentsList = this.pageIndex == 1 ? response.body.message : this.commentsList.concat(response.body.message);
 			}, error => {})
 		},
